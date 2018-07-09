@@ -1,0 +1,22 @@
+<div align="center">
+
+<p><?php print_string("paymentrequired"); ?></p>
+<p><b><?php echo $instancename; ?></b></p>
+<p><b><?php echo get_string("cost").": {$instance->currency} {$localisedcost}"; ?></b></p>
+<p><img alt="<?php print_string('billplzaccepted', 'enrol_billplz'); ?>" src="<?php echo "$CFG->wwwroot/enrol/billplz/billplz.gif"; ?>" /></p>
+<p><?php print_string("paymentinstant") ?></p>
+<form action="<?php echo "$CFG->wwwroot/enrol/billplz/create_a_bill.php"; ?>" method="POST">
+
+<input type="hidden" name="charset" value="utf-8" />
+<input type="hidden" name="description" value="<?php p($coursefullname); ?>" />
+<input type="hidden" name="name" value="<?php p($userfullname); ?>" />
+<input type="hidden" name="custom" value="<?php p($custom_var); ?>" />
+<input type="hidden" name="amount" value="<?php p($cost); ?>" />
+<input type="hidden" name="mobile" value="<?php p($mobile); ?>" />
+<input type="hidden" name="email" value="<?php p($USER->email); ?>" />
+<input type="hidden" name="hash" value="<?php p($hash); ?>" />
+<input type="submit" value="<?php print_string("sendpaymentbutton", "enrol_billplz"); ?>" />
+
+</form>
+
+</div>

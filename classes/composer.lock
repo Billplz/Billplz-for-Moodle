@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "402b001602395a19ef905e9f63a680c6",
+    "packages": [
+        {
+            "name": "billplz/billplz-api",
+            "version": "3.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Billplz/Billplz-API-Class.git",
+                "reference": "7aa365b57c2ff9d0aee9fb720989beedf88ada96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Billplz/Billplz-API-Class/zipball/7aa365b57c2ff9d0aee9fb720989beedf88ada96",
+                "reference": "7aa365b57c2ff9d0aee9fb720989beedf88ada96",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "HTTP Client Library ~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Billplz\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wan",
+                    "email": "wan@billplz.com"
+                }
+            ],
+            "description": "A Billplz API Class",
+            "homepage": "https://www.billplz.com/api",
+            "time": "2018-07-04T03:16:33+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

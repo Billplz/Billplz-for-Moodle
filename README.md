@@ -9,19 +9,19 @@ Accept payment using Billplz by using this plugin.
 
 ## Installation
 
-Copy **billplz** folder to **enrol** directory. **Enrol** folder are located on Moodle base installation directory.  
+Copy **billplz** folder to **enrol** directory. **Enrol** folder are located on Moodle base installation directory.
 
 ## Configuration
 
 1. **Site Administration** >> **Plugins** >> **Enrolments**  >> **Billplz**
-2. Set **API Key**, **X Signature Key** & Collection ID and configure the relevant settings
+2. Set **API Key**, **Collection ID** & **X Signature Key**  and configure the relevant settings
 3. Save Changes
 
 Note: You may also need to setup for the individual courses accordingly to enable the enrolment method.
 
 ## Troubleshooting
 
-* Please make sure you have enabled X Signature Key properly on your [Billplz Account Settings](https://www.billplz.com/enterprise/setting)
+* Please make sure you have enabled X Signature Key properly on your Billplz Account Settings.
 
 ## Other
 

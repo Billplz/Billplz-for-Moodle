@@ -5,8 +5,6 @@
  * This plugin allows you to set up paid courses.
  *
  * @package    enrol_billplz
- * @copyright  2018 Wan @ Billplz
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -127,13 +125,13 @@ class enrol_billplz_plugin extends enrol_plugin
      * @param stdClass $instance
      * @return string html text, usually a form in a text box
      */
-    function enrol_page_hook(stdClass $instance)
+    public function enrol_page_hook(stdClass $instance)
     {
         global $CFG, $USER, $OUTPUT, $PAGE, $DB;
 
         ob_start();
 
-        if ($DB->record_exists('user_enrolments', array('userid'=>$USER->id, 'enrolid'=>$instance->id))) {
+        if ($DB->record_exists('user_enrolments', array('userid' => $USER->id, 'enrolid' => $instance->id))) {
             return ob_get_clean();
         }
 
@@ -145,7 +143,7 @@ class enrol_billplz_plugin extends enrol_plugin
             return ob_get_clean();
         }
 
-        $course = $DB->get_record('course', array('id'=>$instance->courseid));
+        $course = $DB->get_record('course', array('id' => $instance->courseid));
         $context = context_course::instance($course->id);
 
         $shortname = format_string($course->shortname, true, array('context' => $context));
@@ -177,35 +175,24 @@ class enrol_billplz_plugin extends enrol_plugin
             $cost = (float) $instance->cost;
         }
 
-        if (abs($cost) < 0.01) { // no cost, other enrolment methods (instances) should be used
-            echo '<p>'.get_string('nocost', 'enrol_billplz').'</p>';
+        if (abs($cost) < 0.01) {
+            // no cost, other enrolment methods (instances) should be used
+            echo '<p>' . get_string('nocost', 'enrol_billplz') . '</p>';
         } else {
             // Calculate localised and "." cost, make sure we send Billplz the same value
             $localisedcost = format_float($cost, 2, true);
             $cost = format_float($cost, 2, false);
 
-            if (isguestuser()) { // force login only for guest user, not real users with guest role
+            if (isguestuser()) {
+                // force login only for guest user, not real users with guest role
                 $wwwroot = $CFG->wwwroot;
-                echo '<div class="mdl-align"><p>'.get_string('paymentrequired').'</p>';
-                echo '<p><b>'.get_string('cost').": $instance->currency $localisedcost".'</b></p>';
-                echo '<p><a href="'.$wwwroot.'/login/">'.get_string('loginsite').'</a></p>';
+                echo '<div class="mdl-align"><p>' . get_string('paymentrequired') . '</p>';
+                echo '<p><b>' . get_string('cost') . ": $instance->currency $localisedcost" . '</b></p>';
+                echo '<p><a href="' . $wwwroot . '/login/">' . get_string('loginsite') . '</a></p>';
                 echo '</div>';
             } else {
-                //Sanitise some fields before building the Billplz form
-                $coursefullname  = format_string($course->fullname, true, array('context'=>$context));
-                $courseshortname = $shortname;
-                $userfullname    = fullname($USER);
-                $instancename    = $this->get_instance_name($instance);
-
-                $custom_var = "{$USER->id}-{$course->id}-{$instance->id}";
-                $x_signature = $this->get_config('billplzx_signature');
-                $mobile = !empty($USER->phone1) ? $USER->phone1 : $USER->phone2;
-
-                $raw_string = $cost . $custom_var;
-                $filtered_string = preg_replace("/[^a-zA-Z0-9]+/", "", $raw_string);
-                $hash = hash_hmac('sha256', $filtered_string, $x_signature);
-
-                include($CFG->dirroot.'/enrol/billplz/enrol.html');
+                $instancename = $this->get_instance_name($instance);
+                include $CFG->dirroot . '/enrol/billplz/enrol.html';
             }
         }
 
@@ -227,18 +214,18 @@ class enrol_billplz_plugin extends enrol_plugin
             $merge = false;
         } else {
             $merge = array(
-                'courseid'   => $data->courseid,
-                'enrol'      => $this->get_name(),
-                'roleid'     => $data->roleid,
-                'cost'       => $data->cost,
-                'currency'   => $data->currency,
+                'courseid' => $data->courseid,
+                'enrol' => $this->get_name(),
+                'roleid' => $data->roleid,
+                'cost' => $data->cost,
+                'currency' => $data->currency,
             );
         }
         if ($merge and $instances = $DB->get_records('enrol', $merge, 'id')) {
             $instance = reset($instances);
             $instanceid = $instance->id;
         } else {
-            $instanceid = $this->add_instance($course, (array)$data);
+            $instanceid = $this->add_instance($course, (array) $data);
         }
         $step->set_mapping('enrol', $oldid, $instanceid);
     }
@@ -264,8 +251,8 @@ class enrol_billplz_plugin extends enrol_plugin
      */
     protected function get_status_options()
     {
-        $options = array(ENROL_INSTANCE_ENABLED  => get_string('yes'),
-                         ENROL_INSTANCE_DISABLED => get_string('no'));
+        $options = array(ENROL_INSTANCE_ENABLED => get_string('yes'),
+            ENROL_INSTANCE_DISABLED => get_string('no'));
         return $options;
     }
 
@@ -285,7 +272,6 @@ class enrol_billplz_plugin extends enrol_plugin
         }
         return $roles;
     }
-
 
     /**
      * Add elements to the edit instance form.
@@ -372,7 +358,7 @@ class enrol_billplz_plugin extends enrol_plugin
             'roleid' => $validroles,
             'enrolperiod' => PARAM_INT,
             'enrolstartdate' => PARAM_INT,
-            'enrolenddate' => PARAM_INT
+            'enrolenddate' => PARAM_INT,
         );
 
         $typeerrors = $this->validate_param_types($data, $tovalidate);

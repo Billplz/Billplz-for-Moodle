@@ -3,9 +3,6 @@
  * Billplz enrolments plugin settings and presets.
  *
  * @package    enrol_billplz
- * @copyright  2018 Wan @ Billplz
- * @author     Wan @ Billplz - based on code by Petr Skoda and others
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
@@ -14,11 +11,11 @@ if ($ADMIN->fulltree) {
     //--- settings ------------------------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('enrol_billplz_settings', '', get_string('pluginname_desc', 'enrol_billplz')));
 
-    $settings->add(new admin_setting_configtext('enrol_billplz/billplzapi_key', get_string('api_key', 'enrol_billplz'), get_string('api_key_desc', 'enrol_billplz'), '', PARAM_TEXT));
+    $settings->add(new admin_setting_configtext('enrol_billplz/billplz_api_key', get_string('api_key', 'enrol_billplz'), get_string('api_key_desc', 'enrol_billplz'), '', PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('enrol_billplz/billplzx_signature', get_string('x_signature', 'enrol_billplz'), get_string('x_signature_desc', 'enrol_billplz'), '', PARAM_TEXT));
+    $settings->add(new admin_setting_configtext('enrol_billplz/billplz_collection_id', get_string('collection_id', 'enrol_billplz'), get_string('collection_id_desc', 'enrol_billplz'), '', PARAM_TEXT));
 
-    $settings->add(new admin_setting_configtext('enrol_billplz/billplzcollection_id', get_string('collection_id', 'enrol_billplz'), get_string('collection_id_desc', 'enrol_billplz'), '', PARAM_TEXT));
+    $settings->add(new admin_setting_configtext('enrol_billplz/billplz_x_signature', get_string('x_signature', 'enrol_billplz'), get_string('x_signature_desc', 'enrol_billplz'), '', PARAM_TEXT));
 
     $settings->add(new admin_setting_configcheckbox('enrol_billplz/mailstudents', get_string('mailstudents', 'enrol_billplz'), '', 0));
 
@@ -29,9 +26,9 @@ if ($ADMIN->fulltree) {
     // Note: let's reuse the ext sync constants and strings here, internally it is very similar,
     //       it describes what should happen when users are not supposed to be enrolled any more.
     $options = array(
-        ENROL_EXT_REMOVED_KEEP           => get_string('extremovedkeep', 'enrol'),
+        ENROL_EXT_REMOVED_KEEP => get_string('extremovedkeep', 'enrol'),
         ENROL_EXT_REMOVED_SUSPENDNOROLES => get_string('extremovedsuspendnoroles', 'enrol'),
-        ENROL_EXT_REMOVED_UNENROL        => get_string('extremovedunenrol', 'enrol'),
+        ENROL_EXT_REMOVED_UNENROL => get_string('extremovedunenrol', 'enrol'),
     );
     $settings->add(new admin_setting_configselect('enrol_billplz/expiredaction', get_string('expiredaction', 'enrol_billplz'), get_string('expiredaction_help', 'enrol_billplz'), ENROL_EXT_REMOVED_SUSPENDNOROLES, $options));
 
@@ -42,8 +39,8 @@ if ($ADMIN->fulltree) {
         get_string('enrolinstancedefaults_desc', 'admin')
     ));
 
-    $options = array(ENROL_INSTANCE_ENABLED  => get_string('yes'),
-                     ENROL_INSTANCE_DISABLED => get_string('no'));
+    $options = array(ENROL_INSTANCE_ENABLED => get_string('yes'),
+        ENROL_INSTANCE_DISABLED => get_string('no'));
     $settings->add(new admin_setting_configselect(
         'enrol_billplz/status',
         get_string('status', 'enrol_billplz'),

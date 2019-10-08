@@ -1,3 +1,0 @@
-<?php
-
-// later plz

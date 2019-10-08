@@ -3,8 +3,6 @@
  * Strings for component 'enrol_billplz', language 'en'.
  *
  * @package    enrol_billplz
- * @copyright  2018 Wan @ Billplz
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 $string['assignrole'] = 'Assign role';
@@ -41,7 +39,8 @@ $string['billplz:config'] = 'Configure Billplz enrol instances';
 $string['billplz:manage'] = 'Manage enrolled users';
 $string['billplz:unenrol'] = 'Unenrol users from course';
 $string['billplz:unenrolself'] = 'Unenrol self from the course';
-$string['billplzaccepted'] = 'Billplz payments accepted';
+$string['billplz:accepted'] = 'Billplz payments accepted for Bill ID: {$a->bill_id}';
+$string['billplz:rejected'] = 'Billplz payments rejected for Bill ID: {$a->bill_id}';
 $string['pluginname'] = 'Billplz';
 $string['pluginname_desc'] = 'The Billplz module allows you to set up paid courses.  If the cost for any course is zero, then students are not asked to pay for entry.  There is a site-wide cost that you set here as a default for the whole site and then a course setting that you can set for each course individually. The course cost overrides the site cost.';
 $string['privacy:metadata:enrol_billplz:enrol_billplz'] = 'Information about the Billplz transactions for Billplz enrolments.';

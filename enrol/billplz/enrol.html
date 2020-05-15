@@ -3,7 +3,7 @@
 <p><?php print_string('paymentrequired'); ?></p>
 <p><b><?php echo $instancename; ?></b></p>
 <p><b><?php echo get_string('cost').": {$instance->currency} {$localisedcost}"; ?></b></p>
-<p><img alt="<?php print_string('billplz:accepted', 'enrol_billplz'); ?>" src="<?php echo $CFG->wwwroot . '/enrol/billplz/billplz.gif'; ?>" /></p>
+<p><img style="width:400px;height:100px;" alt="<?php print_string('billplz:accepted', 'enrol_billplz'); ?>" src="<?php echo $CFG->wwwroot . '/enrol/billplz/billplz-fpx.png'; ?>" /></p>
 <p><?php print_string("paymentinstant") ?></p>
 <form action="<?php echo $CFG->wwwroot . '/enrol/billplz/create_a_bill.php'; ?>" method="POST">
   <input type="hidden" value="<?php echo $instance->id; ?>" name="instance_id">

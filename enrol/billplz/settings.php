@@ -11,6 +11,8 @@ if ($ADMIN->fulltree) {
     //--- settings ------------------------------------------------------------------------------------------
     $settings->add(new admin_setting_heading('enrol_billplz_settings', '', get_string('pluginname_desc', 'enrol_billplz')));
 
+    $settings->add(new admin_setting_configcheckbox('enrol_billplz/billplz_staging', get_string('is_staging', 'enrol_billplz'), '', 0));
+
     $settings->add(new admin_setting_configtext('enrol_billplz/billplz_api_key', get_string('api_key', 'enrol_billplz'), get_string('api_key_desc', 'enrol_billplz'), '', PARAM_TEXT));
 
     $settings->add(new admin_setting_configtext('enrol_billplz/billplz_collection_id', get_string('collection_id', 'enrol_billplz'), get_string('collection_id_desc', 'enrol_billplz'), '', PARAM_TEXT));

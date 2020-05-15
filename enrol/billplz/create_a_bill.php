@@ -4,6 +4,7 @@
 require "../../config.php";
 require "$CFG->dirroot/enrol/billplz/classes/api.php";
 require "$CFG->dirroot/enrol/billplz/classes/connect.php";
+require_once($CFG->libdir . '/filelib.php');
 //require_once("lib.php");
 
 // Make sure we are enabled in the first place.
@@ -25,8 +26,15 @@ require_login();
 
 $plugin = enrol_get_plugin('billplz');
 
-$connnect = (new Connect($plugin->get_config('billplz_api_key')))->detectMode();
-$billplz = new API($connnect);
+$connect = new Connect($plugin->get_config('billplz_api_key'));
+$is_staging = false;
+
+if (!empty($plugin->get_config('billplz_staging'))){
+    $is_staging = true;
+}
+
+$connect->setStaging($is_staging);
+$billplz = new API($connect);
 
 $plugin_instance = $DB->get_record("enrol", array(
     "id" => $_POST['instance_id'],

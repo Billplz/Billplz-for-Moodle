@@ -6,6 +6,8 @@
  */
 
 $string['assignrole'] = 'Assign role';
+$string['is_staging'] = 'Sandbox';
+$string['is_staging_desc'] = 'Tick for Sandbox mode';
 $string['api_key'] = 'API Secret Key';
 $string['api_key_desc'] = 'The API Key of your Billplz account. You can get it on your Billplz Account Settings';
 $string['x_signature'] = 'X Signature Key';
@@ -52,7 +54,6 @@ $string['privacy:metadata:enrol_billplz:enrol_billplz:memo'] = 'A note that was 
 $string['privacy:metadata:enrol_billplz:enrol_billplz:option_selection1_x'] = 'Full name of the buyer.';
 $string['privacy:metadata:enrol_billplz:enrol_billplz:parent_txn_id'] = 'In the case of a refund, reversal, or canceled reversal, this would be the transaction ID of the original transaction.';
 $string['privacy:metadata:enrol_billplz:enrol_billplz:payment_status'] = 'The status of the payment.';
-$string['privacy:metadata:enrol_billplz:enrol_billplz:payment_type'] = 'Holds whether the payment was funded with an eCheck (echeck), or was funded with billplz balance, credit card, or instant transfer (instant).';
 $string['privacy:metadata:enrol_billplz:enrol_billplz:pending_reason'] = 'The reason why payment status is pending (if that is).';
 $string['privacy:metadata:enrol_billplz:enrol_billplz:reason_code'] = 'The reason why payment status is Reversed, Refunded, Canceled_Reversal, or Denied (if the status is one of them).';
 $string['privacy:metadata:enrol_billplz:enrol_billplz:receiver_email'] = 'Primary email address of the payment recipient (that is, the merchant).';
@@ -72,7 +73,7 @@ $string['privacy:metadata:enrol_billplz:billplz_com:last_name'] = 'Last name of 
 $string['privacy:metadata:enrol_billplz:billplz_com:os0'] = 'Full name of the buyer.';
 $string['processexpirationstask'] = 'billplz enrolment send expiry notifications task';
 $string['sendpaymentbutton'] = 'Send payment via Billplz';
-$string['status'] = 'Allow billplz enrolments';
-$string['status_desc'] = 'Allow users to use billplz to enrol into a course by default.';
-$string['transactions'] = 'billplz transactions';
+$string['status'] = 'Allow Billplz enrolments';
+$string['status_desc'] = 'Allow users to use Billplz to enrol into a course by default.';
+$string['transactions'] = 'Billplz transactions';
 $string['unenrolselfconfirm'] = 'Do you really want to unenrol yourself from course "{$a}"?';

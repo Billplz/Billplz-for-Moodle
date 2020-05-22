@@ -76,6 +76,17 @@ class Connect
         return $return;
     }
 
+    public function getCollectionIndex($parameter = array())
+    {
+        $url = $this->url . 'v4/collections';
+
+        $body = $this->process->post($url, $parameter);
+        $header = $this->process->info['http_code'];
+        $return = array($header, $body);
+
+        return $return;
+    }
+
     public function createOpenCollection($parameter, $optional = array())
     {
         $url = $this->url . 'v4/open_collections';
